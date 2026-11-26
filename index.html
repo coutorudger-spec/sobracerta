@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SobraCerta — quanto sobra de verdade em cada venda</title>
+  <meta name="description" content="Calculadora gratuita para infoprodutores no Brasil: veja o líquido por venda na Kiwify, Hotmart e Cakto, depois de taxas, afiliados, coprodutor, reserva de imposto e meta mensal.">
+  <meta name="theme-color" content="#0E3D2C">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#calculadora">Ir para a calculadora</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#topo" id="topo">
+        <img src="favicon.svg" alt="" width="32" height="32">
+        <span>SobraCerta</span>
+      </a>
+      <nav class="nav" aria-label="Seções">
+        <a href="#calculadora">Calculadora</a>
+        <a href="#comparativo">Comparativo</a>
+        <a href="#precos">Preços</a>
+        <a href="#pro">Kit Pro</a>
+        <a href="#metodo">Método</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">Ferramenta gratuita para quem vende no Brasil</p>
+      <h1>Quanto sobra de verdade em cada venda.</h1>
+      <p class="lede">
+        A taxa da plataforma é só o começo. A SobraCerta mostra o líquido depois de
+        Pix ou cartão, antecipação, afiliado, coprodutor, reserva para impostos,
+        DAS do MEI e saque — e quantas vendas faltam para bater a sua meta do mês.
+      </p>
+    </section>
+
+    <section id="calculadora" class="wrap layout" aria-labelledby="calc-title">
+      <form id="form" class="panel inputs" autocomplete="off">
+        <h2 id="calc-title">Sua oferta</h2>
+
+        <fieldset>
+          <legend>Plataforma</legend>
+          <div class="seg" role="radiogroup" aria-label="Plataforma">
+            <label class="seg-item"><input type="radio" name="platform" value="kiwify" checked> Kiwify</label>
+            <label class="seg-item"><input type="radio" name="platform" value="hotmart"> Hotmart</label>
+            <label class="seg-item"><input type="radio" name="platform" value="cakto"> Cakto</label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span>Preço da oferta</span>
+          <span class="prefix">R$</span>
+          <input type="number" name="price" min="0" step="0.01" value="47" required>
+        </label>
+
+        <label class="field">
+          <span>Quanto das vendas entra no Pix? O resto é cartão.</span>
+          <input type="range" name="pixShare" min="0" max="100" value="50" aria-valuemin="0" aria-valuemax="100">
+          <span class="hint" id="pixHint">50% Pix · 50% cartão</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="antecipacao">
+          <span id="antecLabel">Receber o cartão em 2 dias (antecipação)</span>
+        </label>
+
+        <div class="grid2">
+          <label class="field">
+            <span>Comissão de afiliados</span>
+            <span class="suffix">%</span>
+            <input type="number" name="affiliatePct" min="0" max="100" step="0.1" value="0">
+          </label>
+          <label class="field">
+            <span>Coprodutor</span>
+            <span class="suffix">%</span>
+            <input type="number" name="coproducerPct" min="0" max="100" step="0.1" value="0">
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label class="field">
+            <span>Reserva para impostos</span>
+            <span class="suffix">%</span>
+            <input type="number" name="taxReservePct" min="0" max="100" step="0.1" value="0">
+          </label>
+          <label class="field">
+            <span>DAS do MEI no mês</span>
+            <span class="prefix">R$</span>
+            <input type="number" name="dasMonthly" min="0" step="0.01" value="0" placeholder="Opcional">
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label class="field">
+            <span>Meta líquida no mês</span>
+            <span class="prefix">R$</span>
+            <input type="number" name="monthlyGoal" min="0" step="0.01" value="3000">
+          </label>
+          <label class="field">
+            <span>Saques no mês</span>
+            <input type="number" name="withdrawalsPerMonth" min="0" step="1" value="1">
+          </label>
+        </div>
+
+        <details class="fees">
+          <summary>Ajustar taxas da plataforma</summary>
+          <p class="hint">Os valores padrão foram conferidos em 25/11/2026. Se o seu painel mostrar outra tabela, use a dele.</p>
+          <div class="grid2">
+            <label class="field"><span>Pix — %</span><input type="number" name="pixPercent" min="0" step="0.01"></label>
+            <label class="field"><span>Pix — taxa fixa (R$)</span><input type="number" name="pixFixed" min="0" step="0.01"></label>
+            <label class="field"><span>Cartão — %</span><input type="number" name="cardPercent" min="0" step="0.01"></label>
+            <label class="field"><span>Cartão — taxa fixa (R$)</span><input type="number" name="cardFixed" min="0" step="0.01"></label>
+            <label class="field"><span>Saque (R$)</span><input type="number" name="withdrawFee" min="0" step="0.01"></label>
+            <label class="field"><span>Antecipação — %</span><input type="number" name="antecipacaoPercent" min="0" step="0.01"></label>
+          </div>
+          <button type="button" class="btn ghost" id="restoreFees">Restaurar o padrão desta plataforma</button>
+        </details>
+      </form>
+
+      <div class="results">
+        <article class="panel hero-result" aria-live="polite">
+          <p class="eyebrow" id="resultPlatform">Kiwify</p>
+          <p class="label">Líquido para você, por venda</p>
+          <p class="big" id="netPerSale">R$ 0,00</p>
+          <p class="sub" id="effectiveRate"></p>
+          <p class="warn" id="negWarn" hidden>Neste cenário o líquido fica negativo. Ajuste o preço, as comissões ou as taxas.</p>
+        </article>
+
+        <article class="panel">
+          <h2>De onde sai cada real</h2>
+          <ul class="break" id="breakdown"></ul>
+        </article>
+
+        <article class="panel" id="metaBox">
+          <h2>Para bater a meta do mês</h2>
+          <p class="lead-num" id="salesNeeded"></p>
+          <p class="hint" id="metaDetail"></p>
+        </article>
+
+        <article class="panel">
+          <h2>Qual preço preciso para ficar com um valor líquido?</h2>
+          <label class="field">
+            <span>Quero ficar com isto, por venda</span>
+            <span class="prefix">R$</span>
+            <input type="number" id="desiredNet" min="0" step="0.01" value="40">
+          </label>
+          <p class="lead-num" id="priceForNet"></p>
+        </article>
+
+        <article class="panel scenarios">
+          <h2>Cenários salvos neste aparelho</h2>
+          <p class="hint">Nada é enviado a um servidor. No plano gratuito cabem 3 cenários.</p>
+          <div class="row">
+            <label class="field grow">
+              <span>Nome do cenário</span>
+              <input type="text" id="scenarioName" maxlength="60" placeholder="Ex.: oferta de R$ 47 na Kiwify">
+            </label>
+            <button type="button" class="btn" id="saveScenario">Salvar</button>
+          </div>
+          <ul class="scenario-list" id="scenarioList"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="comparativo" class="wrap" aria-labelledby="comp-title">
+      <h2 id="comp-title">As três plataformas, no mesmo cenário</h2>
+      <p class="section-lede">As taxas padrão de cada uma, com o preço, o mix de Pix, as comissões e a antecipação que você preencheu. A Cakto muda bastante entre Pix e cartão.</p>
+      <div class="table-wrap">
+        <table class="data" id="compareTable">
+          <thead>
+            <tr>
+              <th>Plataforma</th>
+              <th>Taxa estimada</th>
+              <th>Líquido / venda</th>
+              <th>Vendas para a meta</th>
+              <th>Prazo (padrão)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="precos" class="wrap" aria-labelledby="price-title">
+      <h2 id="price-title">E se o ingresso fosse outro?</h2>
+      <p class="section-lede">A mesma conta, em faixas comuns de infoproduto. A taxa fixa pesa mais nos ingressos baratos.</p>
+      <div class="table-wrap">
+        <table class="data" id="priceTable">
+          <thead>
+            <tr>
+              <th>Preço</th>
+              <th>Líquido / venda</th>
+              <th>O que sai em taxas e comissões</th>
+              <th>Vendas para a meta</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="print-actions">
+        <button type="button" class="btn ghost" id="printBtn">Imprimir ou salvar como PDF</button>
+      </div>
+    </section>
+
+    <section id="pro" class="wrap pro" aria-labelledby="pro-title">
+      <div class="panel pro-card">
+        <p class="eyebrow">Kit SobraCerta Pro · <span id="kitPrecoLabel">R$ 27</span></p>
+        <h2 id="pro-title">Simule um lançamento antes de gastar com anúncio.</h2>
+        <p>No Pro você testa verba, CPA e lucro líquido do lançamento, compara dois cenários lado a lado e salva quantos quiser. Também entra a planilha e o guia curto de precificação.</p>
+        <div id="proLocked">
+          <p class="cta-row">
+            <a class="btn" id="buyLink" href="#pro">Comprar o Kit Pro na Kiwify</a>
+            <button type="button" class="btn ghost" id="previewPro">Ver demonstração (só neste aparelho)</button>
+          </p>
+          <p class="hint" id="buyHint">O link de checkout ainda não foi colado. Quando o Rudger criar o produto na Kiwify, ele entra no arquivo config.js.</p>
+          <form id="unlockForm" class="unlock">
+            <label class="field grow">
+              <span>Já comprou? Cole o código de acesso</span>
+              <input type="text" id="proCode" autocomplete="off" placeholder="Código do e-mail de entrega">
+            </label>
+            <button type="submit" class="btn ghost">Desbloquear</button>
+          </form>
+        </div>
+        <div id="proOpen" hidden>
+          <h3>Simulador de lançamento</h3>
+          <div class="grid2">
+            <label class="field">
+              <span>Verba de anúncio</span>
+              <span class="prefix">R$</span>
+              <input type="number" id="adBudget" min="0" step="0.01" value="1000">
+            </label>
+            <label class="field">
+              <span>CPA (custo por venda)</span>
+              <span class="prefix">R$</span>
+              <input type="number" id="cpa" min="0" step="0.01" value="40">
+            </label>
+          </div>
+          <p class="hint">As vendas do lançamento são a verba dividida pelo CPA (só a parte inteira). O líquido usa a oferta preenchida acima.</p>
+          <ul class="break" id="launchBreak"></ul>
+
+          <h3>Comparar dois preços lado a lado</h3>
+          <div class="grid2">
+            <label class="field">
+              <span>Preço A</span>
+              <span class="prefix">R$</span>
+              <input type="number" id="sideA" min="0" step="0.01" value="47">
+            </label>
+            <label class="field">
+              <span>Preço B</span>
+              <span class="prefix">R$</span>
+              <input type="number" id="sideB" min="0" step="0.01" value="97">
+            </label>
+          </div>
+          <div class="table-wrap">
+            <table class="data" id="sideTable">
+              <thead>
+                <tr><th></th><th>Preço A</th><th>Preço B</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="wrap metodo" aria-labelledby="metodo-title">
+      <h2 id="metodo-title">Como a conta é feita</h2>
+      <ol>
+        <li>Primeiro saem a taxa da plataforma e, se você ligou, a antecipação.</li>
+        <li>A comissão do afiliado incide sobre o que sobrou, não sobre o preço cheio. É o que as centrais da Kiwify e da Cakto descrevem.</li>
+        <li>O coprodutor entra depois, sobre o que restou após o afiliado.</li>
+        <li>A reserva para impostos é um percentual que você escolhe sobre o líquido do produtor. Não é um cálculo oficial de IR ou de DAS.</li>
+        <li>No mês, somamos o DAS informado e as tarifas de saque, e dividimos a meta por esse líquido para achar quantas vendas faltam.</li>
+      </ol>
+      <p>
+        Os padrões de novembro de 2026: Kiwify 8,99% + R$ 2,49 (Pix e cartão) e saque de R$ 3,67;
+        Hotmart 9,9% + R$ 2,49 acima de R$ 10, ou 20% até R$ 10, saque de R$ 1,99, antecipação de 2 dias a 3,59%;
+        Cakto, tabela pública, Pix 0% + R$ 2,49 e cartão 4,99% + R$ 2,49 (as taxas reais são as do seu painel).
+      </p>
+      <p class="disclaimer">
+        A SobraCerta é uma estimativa para planejamento. Taxas, prazos e regras mudam.
+        Confirme no painel da plataforma e, para impostos, com um contador.
+        Isto não é recomendação fiscal, financeira nem de investimento.
+        Kiwify, Hotmart e Cakto são marcas dos respectivos donos; não há vínculo com este app.
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>SobraCerta · app-01 · ferramenta gratuita. O Kit Pro é vendido à parte, quando o link da Kiwify estiver no ar.</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
